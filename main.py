@@ -45,4 +45,4 @@ while i < len(lines):
             i += 1
 
 
-obstacles = [graham_scan(points) for points in obstacles]
+obstacles = [graham_scan(polygon) for polygon in obstacles]
