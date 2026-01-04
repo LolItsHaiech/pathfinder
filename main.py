@@ -1,8 +1,9 @@
 from graham import *
+from node import Node
 
-start = None
-goal = None
-obstacles = []
+start: Node = None
+goal: Node = None
+obstacles: list[list[Node]] = []
 
 try:
     with open('inputs.txt', "r") as f:
@@ -19,12 +20,12 @@ while i < len(lines):
     match line:
         case "START":
             x, y = map(int, lines[i + 1].split())
-            start = (x, y)
+            start = Node(x, y)
             i += 2
 
         case "GOAL":
             x, y = map(int, lines[i + 1].split())
-            goal = (x, y)
+            goal = Node(x, y)
             i += 2
 
         case "OBSTACLES":
@@ -33,9 +34,10 @@ while i < len(lines):
 
         case "POINTS":
             num_points = int(lines[i + 1])
-            polygon = []
+            polygon: list[Node] = []
             for j in range(num_points):
-                polygon.append(tuple(map(int, lines[i + 2 + j].split())))
+                x, y = map(int, lines[i + 2 + j].split())
+                polygon.append(Node(x, y))
             obstacles.append(polygon)
             i += 2 + num_points
 
@@ -43,4 +45,4 @@ while i < len(lines):
             i += 1
 
 
-obstacles = [graham_scan(points) for points in obstacles]
+obstacles = [graham_scan(polygon) for polygon in obstacles]
