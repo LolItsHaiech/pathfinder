@@ -3,7 +3,7 @@ class PQueue:
         self.data = []
         self.priority = []
 
-    def enqueue(self, val: int, priority: int):
+    def enqueue(self, val, priority: float):
         self.data.append(val)
         self.priority.append(priority)
 
