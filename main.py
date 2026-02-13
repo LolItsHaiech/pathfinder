@@ -1,8 +1,8 @@
 from graham import *
 from node import Node
 
-start: Node = None
-goal: Node = None
+start: Node | None = None
+goal: Node | None = None
 obstacles: list[list[Node]] = []
 
 try:
@@ -30,7 +30,6 @@ while i < len(lines):
 
         case "OBSTACLES":
             i += 2
-            
 
         case "POINTS":
             num_points = int(lines[i + 1])
@@ -43,6 +42,5 @@ while i < len(lines):
 
         case _:
             i += 1
-
 
 obstacles = [graham_scan(polygon) for polygon in obstacles]
