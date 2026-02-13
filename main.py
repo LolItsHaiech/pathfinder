@@ -1,8 +1,11 @@
 from graham import *
 from node import Node
+from plot_graph import plot_graph_and_path
+from visibility_graph import build_graph
+from astar import AStar
 
-start: Node | None = None
-goal: Node | None = None
+start: Node
+goal: Node
 obstacles: list[list[Node]] = []
 
 try:
@@ -44,3 +47,15 @@ while i < len(lines):
             i += 1
 
 obstacles = [graham_scan(polygon) for polygon in obstacles]
+
+graph = build_graph(start, goal, obstacles) 
+astar = AStar(graph, start, goal) 
+path = astar.run() 
+if path is None: 
+    print("No path found") 
+else: 
+    print("Path length:", len(path)) 
+    for p in path: 
+        print(p.x, p.y)
+
+plot_graph_and_path(graph, obstacles, path)

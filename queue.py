@@ -32,14 +32,14 @@ class Queue:
     def is_empty(self):
         return self.size == 0
 
-    def __str__(self):
-        if self.size == 0:
-            return '[]'
-        lst = []
-        i = self.rear
-        f = True
-        while i != self.front or f:
-            f=False
-            lst.append(str(self.data[self.rear]))
-            i = (i+1) % self.capa
-        return '['+', '.join(lst)+']'
+    def __str__(self): 
+        if self.size == 0: 
+            return '[]' 
+        lst = [] 
+        i = self.rear 
+        count = 0  
+        while count < self.size: 
+            lst.append(str(self.data[i])) 
+            i = (i + 1) % self.capa 
+            count += 1 
+        return '[' + ', '.join(lst) + ']'

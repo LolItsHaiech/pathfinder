@@ -12,5 +12,12 @@ class Node:
             return self.h < other.h
         return self.f < other.f
 
+    def __eq__(self, other):
+        return self.x == other.x and self.y == other.y
+
     def __str__(self) -> str:
         return f"({self.x}, {self.y})"
+
+    # for hashing in dict in graph
+    def __hash__(self):
+        return hash((self.x, self.y))

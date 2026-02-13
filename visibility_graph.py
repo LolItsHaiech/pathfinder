@@ -1,6 +1,4 @@
 import math
-from node import Node
-
 
 def orient(a, b, c):
     v = (b.y - a.y) * (c.x - b.x) - (b.x - a.x) * (c.y - b.y)
