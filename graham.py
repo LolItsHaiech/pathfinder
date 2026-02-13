@@ -1,4 +1,5 @@
 import math
+from merge_sort import mergeSort
 from node import Node
 
 def _srt_key(p: Node, p1: Node):
@@ -17,7 +18,7 @@ def orientation(a: Node, b: Node, c: Node):
 def graham_scan(points: list[Node]):
     p1: Node = min(points, key=lambda p: p.y)
     points.remove(p1)
-    srt: list[Node] = sorted(points, key=lambda p: _srt_key(p, p1), reverse=True)  # todo can be optimized using cross
+    srt: list[Node] = mergeSort(points, key=lambda p: _srt_key(p, p1),reverse=True)  # todo can be optimized using cross
 
     stack: list[Node] = [p1, srt[0]]
 
