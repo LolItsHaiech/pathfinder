@@ -2,7 +2,7 @@ START
 0 0
 
 GOAL
-7 9
+7 8
 
 OBSTACLES
 6

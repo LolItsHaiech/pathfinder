@@ -1,5 +1,6 @@
+import matplotlib
 import matplotlib.pyplot as plt
-
+matplotlib.use('TkAgg')
 def plot_graph_and_path(graph, obstacles, path):
     plt.figure(figsize=(8, 7))
 
@@ -7,7 +8,7 @@ def plot_graph_and_path(graph, obstacles, path):
     for poly in obstacles:
         xs = [p.x for p in poly] + [poly[0].x]
         ys = [p.y for p in poly] + [poly[0].y]
-        plt.plot(xs, ys, color='black', linewidth=1)
+        plt.plot(xs, ys, color='black', linewidth=4)
 
     # plot edges
     for u in graph:

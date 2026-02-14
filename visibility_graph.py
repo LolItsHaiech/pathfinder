@@ -29,6 +29,15 @@ def overlap(p1, q1, p2, q2):
 
 def can_see(u, v, obstacles):
     for poly in obstacles:
+        if u in poly and v in poly:
+            i = poly.index(u)
+            j = poly.index(v)
+            n = len(poly)
+            if (i - j) % n == 1 or (j - i) % n == 1:
+                return True
+            else:
+                return False
+    for poly in obstacles:
         for i in range(len(poly)):
             a = poly[i]
             b = poly[(i + 1) % len(poly)]
@@ -41,9 +50,7 @@ def can_see(u, v, obstacles):
 
             if overlap(u, v, a, b):
                 return False
-
     return True
-
 
 def build_graph(start, goal, obstacles):
     nodes = []
